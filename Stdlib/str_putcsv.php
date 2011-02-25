@@ -10,17 +10,17 @@
   */
 function str_putcsv(array $fields, $delimiter = ',', $enclosure = '"')
 {
-	$handle = fopen('php://memory', 'r+');
+    $handle = fopen('php://memory', 'r+');
 
-	if(false === fputcsv($handle, $fields, $delimiter, $enclosure))
-	{
-		return false;
-	}
+    if(false === fputcsv($handle, $fields, $delimiter, $enclosure))
+    {
+        return false;
+    }
 
-	rewind($handle);
+    rewind($handle);
 
-	$content = stream_get_contents($handle);
-	fclose($handle);
+    $content = stream_get_contents($handle);
+    fclose($handle);
 
-	return $content;
+    return $content;
 }
