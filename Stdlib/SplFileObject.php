@@ -21,7 +21,7 @@ class SplFileObject extends \SplFileObject
      * @param string $delimiter optional
      * @param string $enclosure optional
      * 
-     * @return mixed
+     * @return int
      */
     public function fputcsv(array $fields, $delimiter = ',', $enclosure = '"')
     {
