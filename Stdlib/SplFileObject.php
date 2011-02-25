@@ -34,6 +34,9 @@ class SplFileObject extends \SplFileObject
 
         rewind($handle);
 
-        return $this->fwrite(stream_get_contents($handle));
+        $content = stream_get_contents($handle);
+        fclose($handle);
+
+        return $this->fwrite($content);
     }
 }
