@@ -6,7 +6,7 @@
   * @param string $delimiter optional
   * @param string $enclosure optional
   * 
-  * @return mixed
+  * @return string
   */
 function str_putcsv(array $fields, $delimiter = ',', $enclosure = '"')
 {
