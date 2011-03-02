@@ -1,13 +1,13 @@
- <?php
- /**
-  * Format line as CSV into a string
-  * 
-  * @param array $fields
-  * @param string $delimiter optional
-  * @param string $enclosure optional
-  * 
-  * @return string
-  */
+<?php
+/**
+ * Format line as CSV into a string
+ * 
+ * @param array $fields
+ * @param string $delimiter optional
+ * @param string $enclosure optional
+ * 
+ * @return string
+ */
 function str_putcsv(array $fields, $delimiter = ',', $enclosure = '"')
 {
     $handle = fopen('php://memory', 'r+');
