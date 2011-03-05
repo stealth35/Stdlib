@@ -10,7 +10,7 @@
  */
 function str_putcsv(array $fields, $delimiter = ',', $enclosure = '"')
 {
-    $handle = fopen('php://memory', 'r+');
+    $handle = fopen('php://memory', 'rb+');
 
     if(false === fputcsv($handle, $fields, $delimiter, $enclosure))
     {
