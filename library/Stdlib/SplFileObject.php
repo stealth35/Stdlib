@@ -25,7 +25,7 @@ class SplFileObject extends \SplFileObject
      */
     public function fputcsv(array $fields, $delimiter = ',', $enclosure = '"')
     {
-        $handle = fopen('php://memory', 'r+');
+        $handle = fopen('php://memory', 'rb+');
 
         if(false === fputcsv($handle, $fields, $delimiter, $enclosure))
         {
