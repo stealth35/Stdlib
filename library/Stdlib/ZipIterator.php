@@ -1,5 +1,7 @@
 <?php
-class ZipIterator implements Iterator
+namespace Stdlib;
+
+class ZipIterator implements \Iterator
 {
     private $_resource;
     private $_filename;
@@ -13,7 +15,7 @@ class ZipIterator implements Iterator
 
         if(false === is_resource($this->_resource))
         {
-            throw new RuntimeException('zip error', $this->_resource);
+            throw new \RuntimeException('zip error', $this->_resource);
         }
 
         $this->_current = zip_read($this->_resource);
