@@ -19,6 +19,8 @@ class ZipIterator implements \Iterator
     /**
      * @param string $filename
      * @throws \RuntimeException
+     *
+     * @todo Imporve errors handling
      */
     public function __construct($filename)
     {
