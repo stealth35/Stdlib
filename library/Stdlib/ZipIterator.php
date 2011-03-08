@@ -33,7 +33,7 @@ class ZipIterator implements \Iterator
         }
 
         $this->_current = zip_read($this->_resource);
-        $this->position = 0;
+        $this->_position = 0;
     }
 
     public function current()
