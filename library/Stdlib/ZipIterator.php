@@ -47,9 +47,7 @@ class ZipIterator implements \Iterator
             zip_close($this->_resource);
         }
 
-        $this->_resource = zip_open($this->_filename);
-        $this->_current  = zip_read($this->_resource);
-        $this->_position = 0;
+        $this->__construct($this->_filename);
     }
 
     public function valid()
