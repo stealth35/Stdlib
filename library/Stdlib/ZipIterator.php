@@ -54,8 +54,7 @@ class ZipIterator implements \Iterator
 
     public function rewind()
     {
-        zip_close($this->_resource);
-
+        $this->__destruct();
         $this->__construct($this->_filename);
     }
 
