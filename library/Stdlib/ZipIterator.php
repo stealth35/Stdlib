@@ -42,10 +42,7 @@ class ZipIterator implements \Iterator
 
     public function rewind()
     {
-        if($this->_resource)
-        {
-            zip_close($this->_resource);
-        }
+        zip_close($this->_resource);
 
         $this->__construct($this->_filename);
     }
