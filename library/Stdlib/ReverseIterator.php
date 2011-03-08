@@ -15,8 +15,8 @@ class ReverseIterator implements \IteratorAggregate
     private $_preserve_keys;
 
     /**
-     * @param string $filename
-     * @throws \RuntimeException
+     * @param \Traversable $iterator
+     * @param boolean $preserve_keys
      */
     public function __construct(\Traversable $iterator, $preserve_keys = false)
     {
