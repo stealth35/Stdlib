@@ -50,8 +50,6 @@ class ZipIterator implements \Iterator
     {
         $this->_current = zip_read($this->_resource);
         $this->_position++;
-
-        return $this->_current;
     }
 
     public function rewind()
