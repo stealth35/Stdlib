@@ -1,9 +1,11 @@
 <?php
-class ReverseIterator implements IteratorAggregate
+namespace Stdlib;
+
+class ReverseIterator implements \IteratorAggregate
 {
     private $_iterator;
 
-    public function __construct(Traversable $iterator)
+    public function __construct(\Traversable $iterator)
     {
         $this->_iterator = $iterator;
     }
@@ -13,6 +15,6 @@ class ReverseIterator implements IteratorAggregate
         $array = iterator_to_array($this->_iterator, true);
         $reverse = array_reverse($array, true);
 
-        return new ArrayIterator($reverse);
+        return new \ArrayIterator($reverse);
     }
 }
