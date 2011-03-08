@@ -1,6 +1,14 @@
 <?php
+/**
+* @namespace
+*/
 namespace Stdlib;
 
+/**
+* @category Stdlib
+* @package  Stdlib
+* @author   stealth35
+*/
 class ZipIterator implements \Iterator
 {
     private $_resource;
@@ -8,6 +16,10 @@ class ZipIterator implements \Iterator
     private $_current;
     private $_position;
 
+    /**
+     * @param string $filename
+     * @throws \RuntimeException
+     */
     public function __construct($filename)
     {
         $this->_filename = $filename;
