@@ -2,6 +2,8 @@
 /**
  * Format line as CSV into a string
  * 
+ * @author   stealth35
+ *
  * @param array $fields
  * @param string $delimiter optional
  * @param string $enclosure optional
