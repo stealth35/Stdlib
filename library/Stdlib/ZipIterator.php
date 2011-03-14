@@ -49,7 +49,7 @@ class ZipIterator implements \Iterator
     public function next()
     {
         $this->_current = zip_read($this->_resource);
-        $this->_position++;
+        ++$this->_position;
     }
 
     public function rewind()
