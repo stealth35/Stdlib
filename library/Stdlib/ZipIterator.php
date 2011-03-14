@@ -32,8 +32,8 @@ class ZipIterator implements \Iterator
             throw new \RuntimeException('zip error', $this->_resource);
         }
 
-        $this->_current = zip_read($this->_resource);
-        $this->_position = 0;
+        $this->_position = -1;
+        $this->next();
     }
 
     public function current()
