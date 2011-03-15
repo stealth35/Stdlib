@@ -32,15 +32,11 @@ class PDOIterator implements \Iterator
         $this->_cursor_offset = $cursor_offset;
         
         $this->_position = -1;
+        $this->next();
     }
     
-    public function current()
+        public function current()
     {
-        if($this->_position === -1)
-        {
-            $this->next();
-        }
-
         return $this->_current;
     }
 

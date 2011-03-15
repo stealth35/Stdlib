@@ -33,15 +33,11 @@ class ZipIterator implements \Iterator
         }
 
         $this->_position = -1;
+        $this->next();
     }
 
     public function current()
     {
-        if($this->_position === -1)
-        {
-            $this->next();
-        }
-
         return $this->_current;
     }
 
