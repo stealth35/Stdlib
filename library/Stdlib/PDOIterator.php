@@ -5,10 +5,10 @@
 namespace Stdlib;
 
 /**
-* @category Stdlib
-* @package  Stdlib
-* @author   stealth35
-*/
+ * @category Stdlib
+ * @package  Stdlib
+ * @author   stealth35
+ */
 class PDOIterator implements \Iterator
 {
     private $_stmt;

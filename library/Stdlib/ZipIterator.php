@@ -1,14 +1,14 @@
 <?php
 /**
-* @namespace
-*/
+ * @namespace
+ */
 namespace Stdlib;
 
 /**
-* @category Stdlib
-* @package  Stdlib
-* @author   stealth35
-*/
+ * @category Stdlib
+ * @package  Stdlib
+ * @author   stealth35
+ */
 class ZipIterator implements \Iterator
 {
     private $_resource;
