@@ -9,7 +9,7 @@ namespace Stdlib;
 * @package  Stdlib
 * @author   stealth35
 */
-class PDOIterator implements Iterator
+class PDOIterator implements \Iterator
 {
     private $_stmt;
     private $_current;
