@@ -35,7 +35,7 @@ class PDOIterator implements \Iterator
         $this->next();
     }
     
-        public function current()
+    public function current()
     {
         return $this->_current;
     }
