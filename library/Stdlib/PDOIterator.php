@@ -26,10 +26,10 @@ class PDOIterator implements \Iterator
      */
     public function __construct(\PDOStatement $stmt, $fetch_style = null, $cursor_orientation = null, $cursor_offset = null)
     {
-        $this->_stmt = $stmt;
-        $this->_fetch_style = $fetch_style;
+        $this->_stmt               = $stmt;
+        $this->_fetch_style        = $fetch_style;
         $this->_cursor_orientation = $cursor_orientation;
-        $this->_cursor_offset = $cursor_offset;
+        $this->_cursor_offset      = $cursor_offset;
         
         $this->_position = -1;
         $this->next();
