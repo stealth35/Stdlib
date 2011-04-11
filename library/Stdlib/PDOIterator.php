@@ -9,7 +9,7 @@ namespace Stdlib;
  * @package  Stdlib
  * @author   stealth35
  */
-class PDOIterator extends \NoRewindIterator implements \IteratorAggregate, \Countable
+class PDOIterator extends implements \IteratorAggregate, \Countable
 {
     private $_stmt;
 
