@@ -9,9 +9,9 @@ namespace Stdlib;
  * @package  Stdlib
  * @author   stealth35
  */
-class ZipIterator implements \Iterator
+class ZipIterator implements \SeekableIterator
 {
-    private $_resource;
+    private $_zip;
     private $_filename;
     private $_current;
     private $_position;
@@ -24,15 +24,18 @@ class ZipIterator implements \Iterator
      */
     public function __construct($filename)
     {
-        $this->_filename = $filename;
-        $this->_resource = zip_open($this->_filename);
-
-        if(false === is_resource($this->_resource))
-        {
-            throw new \RuntimeException('zip error', $this->_resource);
+        $this->_filename = $filename;                
+        $this->_zip = new \ZipArchive();
+        
+		$ret = $this->_zip->open($this->_filename);
+		
+        if(true !== $ret)
+        {            
+            $message = sprintf('zip error', $ret);
+            throw new \RuntimeException($message);
         }
 
-        $this->_position = -1;
+        $this->_position = 0;
         $this->next();
     }
 
@@ -47,24 +50,29 @@ class ZipIterator implements \Iterator
     }
 
     public function next()
-    {
-        $this->_current = zip_read($this->_resource);
+    {        
+        $this->_current = $this->_zip->statIndex($this->_position);        
         ++$this->_position;
     }
 
     public function rewind()
     {
-        $this->__destruct();
-        $this->__construct($this->_filename);
+        $this->_position = 0;
+        $this->next();
     }
 
     public function valid()
     {
-        return is_resource($this->_current);
+        return is_array($this->_current);
+    }
+    
+    public function seek($position)
+    {
+    	$this->_position = $position;
     }
 
     public function __destruct()
     {
-        zip_close($this->_resource);
+        $this->_zip->close();
     }
 }
