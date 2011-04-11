@@ -27,7 +27,7 @@ class ZipIterator implements \SeekableIterator
         $this->_filename = $filename;                
         $this->_zip = new \ZipArchive();
         
-		$ret = $this->_zip->open($this->_filename);
+        $ret = $this->_zip->open($this->_filename);
 		
         if(true !== $ret)
         {            
