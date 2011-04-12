@@ -225,8 +225,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function isDir()
     {
-        return substr($this->_stat['name'], -1) === '/';
-        
+        return substr($this->_stat['name'], -1) === '/';        
     }
 
     /**
