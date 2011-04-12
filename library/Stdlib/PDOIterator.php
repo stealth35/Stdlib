@@ -11,6 +11,9 @@ namespace Stdlib;
  */
 class PDOIterator implements \IteratorAggregate, \Countable
 {
+    /**
+     * @var \PDOStatement
+     */
     private $_stmt;
 
     /**
@@ -21,11 +24,17 @@ class PDOIterator implements \IteratorAggregate, \Countable
         $this->_stmt = $stmt;
     }
 
+  	/**
+  	 * @see \IteratorAggregate::getIterator()
+  	 */
     public function getIterator()
     {
         return new IteratorIterator($this->_stmt);
     }
     
+    /**
+     * @see \Countable::count()
+     */
     public function count()
     {
         return $this->_stmt->rowCount();
