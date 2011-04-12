@@ -41,7 +41,7 @@ class SplZipFileInfo extends \SplFileInfo
 
         $filename = substr(strstr($file_name, '#'), 1);
         
-        $zip = new \ZipArchive();        
+        $zip = new \ZipArchive();
         $ret = $zip->open($this->_archive);
 
         if(true !== $ret)
