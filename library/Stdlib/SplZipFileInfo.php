@@ -84,7 +84,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getPerms()
     {
-        return $this->getArchiveFileInfo()->getPerms();
+        return $this->getZipArchiveFileInfo()->getPerms();
     }
 
     /**
@@ -92,7 +92,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getInode()
     {
-        return $this->getArchiveFileInfo()->getInode();
+        return $this->getZipArchiveFileInfo()->getInode();
     }
 
     /**
@@ -100,7 +100,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getOwner()
     {
-        return $this->getArchiveFileInfo()->getOwner();
+        return $this->getZipArchiveFileInfo()->getOwner();
     }
 
     /**
@@ -108,7 +108,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getGroup()
     {
-        return $this->getArchiveFileInfo()->getGroup();
+        return $this->getZipArchiveFileInfo()->getGroup();
     }
 
     /**
@@ -116,7 +116,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getATime()
     {
-        return $this->getArchiveFileInfo()->getATime();
+        return $this->getZipArchiveFileInfo()->getATime();
     }
 
     /**
@@ -132,7 +132,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getCTime()
     {
-        return $this->getArchiveFileInfo()->getCTime();
+        return $this->getZipArchiveFileInfo()->getCTime();
     }
 
     /**
@@ -156,7 +156,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function isWritable()
     {
-        return $this->getArchiveFileInfo()->isWritable();
+        return $this->getZipArchiveFileInfo()->isWritable();
     }
 
     /**
@@ -164,7 +164,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function isReadable()
     {
-        return $this->getArchiveFileInfo()->isReadable();
+        return $this->getZipArchiveFileInfo()->isReadable();
     }
 
     /**
@@ -172,7 +172,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function isExecutable()
     {
-        return $this->getArchiveFileInfo()->isExecutable();
+        return $this->getZipArchiveFileInfo()->isExecutable();
     }
 
     /**
@@ -241,7 +241,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getRealPath()
     {
-        return sprintf('zip://%s#%s', $this->getArchiveFileInfo()->getRealPath(), $this->getPathname());
+        return sprintf('zip://%s#%s', $this->getZipArchiveFileInfo()->getRealPath(), $this->getPathname());
     }
 
     /**
@@ -277,7 +277,7 @@ class SplZipFileInfo extends \SplFileInfo
      * Return ZipArchive info of this file
      * @return \SplFileInfo
      */
-    public function getArchiveFileInfo()
+    public function getZipArchiveFileInfo()
     {
         return new \SplFileInfo($this->_archive);
     }
