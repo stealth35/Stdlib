@@ -23,7 +23,6 @@ class SplZipFileInfo extends \SplFileInfo
 
     /**
      * @param string $file_name
-     * @todo Error Handling
      */
     public function __construct($file_name)
     {
@@ -42,8 +41,14 @@ class SplZipFileInfo extends \SplFileInfo
 
         $filename = substr(strstr($file_name, '#'), 1);
         
-        $zip = new \ZipArchive();
-        $zip->open($this->_archive);
+        $zip = new \ZipArchive();        
+        $ret = $zip->open($this->_archive);
+
+        if(true !== $ret)
+        {
+            $message = sprintf('zip error', $ret);
+            throw new \RuntimeException($message);
+        }
         
         $this->_stat = $zip->statName($filename);
     }
