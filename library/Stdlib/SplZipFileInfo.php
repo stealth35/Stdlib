@@ -20,6 +20,11 @@ class SplZipFileInfo extends \SplFileInfo
      * @var string
      */
     private $_archive;
+    
+     /**
+     * @var \ZipArchive
+     */
+    private $_zip;
 
     /**
      * @param string $file_name
@@ -41,8 +46,9 @@ class SplZipFileInfo extends \SplFileInfo
 
         $filename = substr(strstr($file_name, '#'), 1);
         
-        $zip = new \ZipArchive();
-        $ret = $zip->open($this->_archive);
+        $this->_zip = new \ZipArchive();
+
+        $ret = $this->_zip->open($this->_archive);
 
         if(true !== $ret)
         {
@@ -285,5 +291,14 @@ class SplZipFileInfo extends \SplFileInfo
     public function getZipArchiveFileInfo()
     {
         return new \SplFileInfo($this->_archive);
+    }
+    
+    /**
+     * Return ZipArchive of this file
+     * @return \ZipArchive
+     */
+    public function getZipArchive()
+    {
+        return $this->_zip;
     }
 }
