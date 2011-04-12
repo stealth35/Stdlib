@@ -13,23 +13,36 @@ class SplVectorIterator extends \ArrayIterator
 {    
     private $_type;
 
+    /**
+     * @param string $type
+     */
     public function __construct($type)
     {        
         $this->_type = $type;
     }
 
+    /**
+     * @see ArrayIterator::append()
+     */
     public function append($value)
     {
         $this->_inspect($value);
         parent::append($value);
     }
 
+    /**
+     * @see ArrayIterator::offsetSet()
+     */
     public function offsetSet($index, $newval)
     {
         $this->_inspect($newval);
         parent::offsetSet($index, $newval);
     }
 
+    /**
+     * @param string $value
+     * @throws \UnexpectedValueException
+     */
     private function _inspect($value)
     {
         if($this->_type !== ($type = gettype($value)))
