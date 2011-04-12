@@ -11,7 +11,14 @@ namespace Stdlib;
  */
 class ReverseIterator implements \IteratorAggregate
 {
+	/**
+	 * @var \Traversable
+	 */
     private $_iterator;
+    
+    /**
+     * @var boolean
+     */
     private $_preserve_keys;
 
     /**
@@ -24,6 +31,9 @@ class ReverseIterator implements \IteratorAggregate
         $this->_preserve_keys = $preserve_keys;
     }
 
+    /**
+     * @see IteratorAggregate::getIterator()
+     */
     public function getIterator()
     {
         $array = iterator_to_array($this->_iterator, $this->_preserve_keys);
