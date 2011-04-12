@@ -11,9 +11,19 @@ namespace Stdlib;
  */
 class SplZipFileInfo extends \SplFileInfo
 {
+    /**
+     * @var array
+     */
     private $_stat;
+    
+    /**
+     * @var string
+     */
     private $_archive;
 
+    /**
+     * @param string $file_name
+     */
     public function __construct($file_name)
     {
         parent::__construct($file_name);
@@ -37,61 +47,97 @@ class SplZipFileInfo extends \SplFileInfo
         $this->_stat = $zip->statName($filename);
     }
 
+    /**
+     * @see \SplFileInfo::getFilename()
+     */
     public function getFilename()
     {
         return basename($this->_stat['name']);
     }
 
+    /**
+     * @see \SplFileInfo::getPath()
+     */
     public function getPath()
     {
         return dirname($this->_stat['name']);
     }
 
+    /**
+     * @see \SplFileInfo::getBasename()
+     */
     public function getBasename($suffix = null)
     {
         return basename($this->_stat['name'], $suffix);
     }
 
+    /**
+     * @see \SplFileInfo::getPathname()
+     */
     public function getPathname()
     {
         return $this->_stat['name'];
     }
 
+    /**
+     * @see SplFileInfo::getPerms()
+     */
     public function getPerms()
     {
         return $this->getArchiveFileInfo()->getPerms();
     }
 
+    /**
+     * @see \SplFileInfo::getInode()
+     */
     public function getInode()
     {
         return $this->getArchiveFileInfo()->getInode();
     }
 
+    /**
+     * @see \SplFileInfo::getOwner()
+     */
     public function getOwner()
     {
         return $this->getArchiveFileInfo()->getOwner();
     }
 
+    /**
+     * @see \SplFileInfo::getGroup()
+     */
     public function getGroup()
     {
         return $this->getArchiveFileInfo()->getGroup();
     }
 
+    /**
+     * @see \SplFileInfo::getATime()
+     */
     public function getATime()
     {
         return $this->getArchiveFileInfo()->getATime();
     }
 
+    /**
+     * @see \SplFileInfo::getMTime()
+     */
     public function getMTime()
     {
         return $this->_stat['mtime'];
     }
 
+    /**
+     * @see \SplFileInfo::getCTime()
+     */
     public function getCTime()
     {
         return $this->getArchiveFileInfo()->getCTime();
     }
 
+    /**
+     * @see \SplFileInfo::getType()
+     */
     public function getType()
     {
         if($this->isDir())
@@ -105,72 +151,118 @@ class SplZipFileInfo extends \SplFileInfo
         }
     }
 
+    /**
+     * @see \SplFileInfo::isWritable()
+     */
     public function isWritable()
     {
         return $this->getArchiveFileInfo()->isWritable();
     }
 
+    /**
+     * @see \SplFileInfo::isReadable()
+     */
     public function isReadable()
     {
         return $this->getArchiveFileInfo()->isReadable();
     }
 
+    /**
+     * @see \SplFileInfo::isExecutable()
+     */
     public function isExecutable()
     {
         return $this->getArchiveFileInfo()->isExecutable();
     }
 
+    /**
+     * Return ZipArchive file index
+     * @return int
+     */
     public function getIndex()
     {
         return $this->_stat['index'];
     }
 
+    /**
+     * Return ZipArchive file CRC
+     * @return string
+     */
     public function getCRC()
     {
         return $this->_stat['crc'];
     }
 
+    /**
+     * @see \SplFileInfo::getSize()
+     */
     public function getSize()
     {
         return $this->_stat['size'];
     }
 
+    /**
+     * Return ZipArchive file compresse size
+     * @return int
+     */
     public function getCompressSize()
     {
         return $this->_stat['comp_size'];
     }
 
+    /**
+     * Return ZipArchive file compresse method
+     * @return int
+     */
     public function getCompressMethod()
     {
         return $this->_stat['comp_method'];
     }
 
+    /**
+     * @see \SplFileInfo::isDir()
+     */
     public function isDir()
     {
         return substr($this->_stat['name'], -1) === '/';
         
     }
 
+    /**
+     * @see \SplFileInfo::isFile()
+     */
     public function isFile()
     {
         return !$this->isDir();
     }
 
+    /**
+     * @see \SplFileInfo::getRealPath()
+     */
     public function getRealPath()
     {
         return sprintf('zip://%s#%s', $this->getArchiveFileInfo()->getRealPath(), $this->getPathname());
     }
 
+    /**
+     * @see \SplFileInfo::getFileInfo()
+     */
     public function getFileInfo($class_name = __CLASS__)
     {
         return new $class_name($this->getRealPath());  
     }
 
+    /**
+     * @see \SplFileInfo::getPathInfo()
+     */
     public function getPathInfo($class_name = __CLASS__)
     {
         return new $class_name($this->getRealPath());  
     }
 
+    /**
+     * @see \SplFileInfo::openFile()
+     */
     public function openFile($open_mode = 'r', $use_include_path = false, $context = null)
     {
         if($context === null)
@@ -181,6 +273,10 @@ class SplZipFileInfo extends \SplFileInfo
         return new \SplFileObject($this->getRealPath(), $open_mode, $use_include_path, $context);
     }
 
+    /**
+     * Return ZipArchive info of this file
+     * @return \SplFileInfo
+     */
     public function getArchiveFileInfo()
     {
         return new \SplFileInfo($this->_archive);
