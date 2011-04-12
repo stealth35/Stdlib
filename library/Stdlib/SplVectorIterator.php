@@ -10,7 +10,10 @@ namespace Stdlib;
  * @author   stealth35
  */
 class SplVectorIterator extends \ArrayIterator
-{    
+{
+    /**
+     * @var string
+     */
     private $_type;
 
     /**
