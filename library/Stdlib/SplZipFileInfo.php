@@ -15,13 +15,13 @@ class SplZipFileInfo extends \SplFileInfo
      * @var array
      */
     private $_stat;
-    
+
     /**
      * @var string
      */
     private $_archive;
-    
-     /**
+
+    /**
      * @var \ZipArchive
      */
     private $_zip;
@@ -45,7 +45,7 @@ class SplZipFileInfo extends \SplFileInfo
         }
 
         $filename = substr(strstr($file_name, '#'), 1);
-        
+
         $this->_zip = new \ZipArchive();
 
         $ret = $this->_zip->open($this->_archive);
@@ -55,7 +55,7 @@ class SplZipFileInfo extends \SplFileInfo
             $message = sprintf('zip error', $ret);
             throw new \RuntimeException($message);
         }
-        
+
         $this->_stat = $zip->statName($filename);
     }
 
@@ -292,7 +292,7 @@ class SplZipFileInfo extends \SplFileInfo
     {
         return new \SplFileInfo($this->_archive);
     }
-    
+
     /**
      * Return ZipArchive of this file
      * @return \ZipArchive
