@@ -23,6 +23,7 @@ class SplZipFileInfo extends \SplFileInfo
 
     /**
      * @param string $file_name
+     * @todo Error Handling
      */
     public function __construct($file_name)
     {
