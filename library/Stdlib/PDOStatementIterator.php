@@ -9,7 +9,7 @@ namespace Stdlib;
  * @package  Stdlib
  * @author   stealth35
  */
-class PDOIterator extends \NoRewindIterator implements \Countable
+class PDOStatementIterator extends \NoRewindIterator implements \Countable
 {
     /**
      * @var \PDOStatement
