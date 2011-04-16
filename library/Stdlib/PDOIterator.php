@@ -9,7 +9,7 @@ namespace Stdlib;
  * @package  Stdlib
  * @author   stealth35
  */
-class PDOIterator implements \IteratorAggregate, \Countable
+class PDOIterator extends \NoRewindIterator implements \Countable
 {
     /**
      * @var \PDOStatement
@@ -22,14 +22,7 @@ class PDOIterator implements \IteratorAggregate, \Countable
     public function __construct(\PDOStatement $stmt)
     {
         $this->_stmt = $stmt;
-    }
-
-  	/**
-  	 * @see \IteratorAggregate::getIterator()
-  	 */
-    public function getIterator()
-    {
-        return new IteratorIterator($this->_stmt);
+        parent::__construct(new \IteratorIterator($this->_stmt));
     }
     
     /**
