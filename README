@@ -1,1 +1,28 @@
 PHP Stdlib extra
+---------------
+
+**INSTALL**
+
+
+	set_include_path('../Stdlib/library' . PATH_SEPARATOR . get_include_path());
+	spl_autoload_register();
+
+**EXEMPLE**
+
+	$zip = new Stdlib\ZipArchiveIterator('Stdlib.zip#Stdlib/library/Stdlib/');
+	foreach($zip as  $file)
+	{
+	    var_dump($file->getFilename());
+	}
+
+	/*
+	string(24) "PDOStatementIterator.php"
+	string(31) "RecursiveZipArchiveIterator.php"
+	string(17) "RegexIterator.php"
+	string(19) "ReverseIterator.php"
+	string(17) "SplFileObject.php"
+	string(21) "SplVectorIterator.php"
+	string(18) "SplZipFileInfo.php"
+	string(22) "ZipArchiveIterator.php"
+	string(14) "str_putcsv.php"
+	*/
