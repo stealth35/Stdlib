@@ -1,13 +1,15 @@
 PHP Stdlib extra
----------------
+================
 
-**INSTALL**
+INSTALL
+-------
 
 
 	set_include_path('../Stdlib/library' . PATH_SEPARATOR . get_include_path());
 	spl_autoload_register();
 
-**EXEMPLE**
+EXEMPLE
+-------
 
 	$zip = new Stdlib\ZipArchiveIterator('Stdlib.zip#Stdlib/library/Stdlib/');
 	foreach($zip as  $file)
