@@ -58,7 +58,7 @@ class ZipArchiveIterator extends SplZipFileInfo implements \Iterator
      */
     public function key()
     {
-        return $this->_position - 1;
+        return $this->current()->getPathname();;
     }
 
     /**
