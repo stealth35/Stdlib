@@ -14,17 +14,22 @@ class SplZipFileInfo extends \SplFileInfo
     /**
      * @var array
      */
-    private $_stat;
+    protected $_stat;
 
     /**
      * @var string
      */
-    private $_archive;
+    protected $_zip_name;
+    
+    /**
+     * @var \ZipArchive
+     */
+    protected $_file_name;
 
     /**
      * @var \ZipArchive
      */
-    private $_zip;
+    protected $_zip;
 
     /**
      * @param string $file_name
@@ -37,18 +42,18 @@ class SplZipFileInfo extends \SplFileInfo
         
         if(strpos($archive, 'zip://') === 0)
         {
-            $this->_archive = substr($archive, strlen('zip://'));
+            $this->_zip_name = substr($archive, strlen('zip://'));
         }
         else
         {
-            $this->_archive = $archive;
+            $this->_zip_name = $archive;
         }
 
         $filename = substr(strstr($file_name, '#'), 1);
 
-        $this->_zip = new \ZipArchive();
+        $zip = new \ZipArchive();
 
-        $ret = $this->_zip->open($this->_archive);
+        $ret = $zip->open($this->_zip_name);
 
         if(true !== $ret)
         {
@@ -57,6 +62,8 @@ class SplZipFileInfo extends \SplFileInfo
         }
 
         $this->_stat = $zip->statName($filename);
+        $this->_zip = $zip;
+        $this->_file_name = $filename;
     }
 
     /**
@@ -290,7 +297,7 @@ class SplZipFileInfo extends \SplFileInfo
      */
     public function getZipArchiveFileInfo()
     {
-        return new \SplFileInfo($this->_archive);
+        return new \SplFileInfo($this->_zip_name);
     }
 
     /**
@@ -300,5 +307,5 @@ class SplZipFileInfo extends \SplFileInfo
     public function getZipArchive()
     {
         return $this->_zip;
-    }
+    }  
 }
