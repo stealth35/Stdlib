@@ -22,11 +22,6 @@ class ZipArchiveIterator extends SplZipFileInfo implements \Iterator
     private $_position;
 
     /**
-     * @var int
-     */
-    private $_internal_position;
-
-    /**
      * @param string $filename
      * @throws \RuntimeException
      *
@@ -41,7 +36,7 @@ class ZipArchiveIterator extends SplZipFileInfo implements \Iterator
             throw new \UnexpectedValueException(sprintf('%s is not a directory', $file_name));
         }
 
-        $this->_position = $this->_internal_position = 0;
+        $this->_position = 0;
         $this->next();
     }
 
@@ -66,17 +61,16 @@ class ZipArchiveIterator extends SplZipFileInfo implements \Iterator
      */
     public function next()
     {
-        $stat = $this->_zip->statIndex($this->_internal_position);
+        $stat = $this->_zip->statIndex($this->_position);
 
         if(is_array($stat))
         {
-            ++$this->_internal_position;
+            ++$this->_position;
 
             if(dirname($stat['name']) . '/' === $this->_file_name)
             {
                 $file_name = sprintf('zip://%s#%s', $this->_zip_name, $stat['name']);
-                $this->_current = new SplZipFileInfo($file_name);
-                ++$this->_position;
+                $this->_current = new SplZipFileInfo($file_name);                
             }
             else
             {
@@ -94,7 +88,7 @@ class ZipArchiveIterator extends SplZipFileInfo implements \Iterator
      */
     public function rewind()
     {
-        $this->_position = $this->_internal_position = 0;
+        $this->_position = 0;
         $this->next();
     }
 
