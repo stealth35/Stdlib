@@ -7,7 +7,7 @@ INSTALL
 ``` php
 	set_include_path('../Stdlib/library' . PATH_SEPARATOR . get_include_path());
 	spl_autoload_register();
-``` php
+```
 
 EXEMPLE
 -------
@@ -29,4 +29,4 @@ EXEMPLE
 	string(22) "ZipArchiveIterator.php"
 	string(14) "str_putcsv.php"
 	*/
-``` php
+```
