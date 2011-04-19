@@ -5,6 +5,7 @@ INSTALL
 -------
 
 ``` php
+<?php
 	set_include_path('../Stdlib/library' . PATH_SEPARATOR . get_include_path());
 	spl_autoload_register();
 ```
@@ -12,6 +13,7 @@ INSTALL
 EXEMPLE
 -------
 ``` php
+<?php
 	$zip = new Stdlib\ZipArchiveIterator('Stdlib.zip#Stdlib/library/Stdlib/');
 	foreach($zip as  $file)
 	{
