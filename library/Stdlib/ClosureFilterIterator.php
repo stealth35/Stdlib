@@ -9,7 +9,7 @@ namespace Stdlib;
  * @package  Stdlib
  * @author   stealth35
  */
-class ClosureFilterIterator extends FilterIterator
+class ClosureFilterIterator extends \FilterIterator
 {
     /**
      * @var \Closure
