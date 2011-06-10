@@ -58,6 +58,11 @@ class WebSocket
             throw new \ErrorException($errstr, $errno, E_USER_WARNING);
         }
 
+        if($url->scheme === 'wss')
+        {
+            stream_socket_enable_crypto($this->socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+        }
+
         stream_set_blocking($this->socket, 0);
 
         $headers = array(
