@@ -90,7 +90,7 @@ class WebSocket
         $r = array($this->socket);
         $w = $e = null;
 
-        while(stream_select($r, $w, $e, 200));
+        while(stream_select($r, $w, $e, 0));
     }
 
     /**
@@ -106,7 +106,7 @@ class WebSocket
         $r = array($this->socket);
         $w = $e = null;
 
-        while(stream_select($r, $w, $e, 200));
+        while(stream_select($r, $w, $e, 0));
 
         stream_socket_shutdown($this->socket, STREAM_SHUT_RDWR);
     }
