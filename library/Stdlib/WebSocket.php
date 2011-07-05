@@ -11,8 +11,19 @@ namespace Stdlib;
  */
 class WebSocket
 {
+    /**
+     * @var string
+     */
     protected $url;
+
+    /**
+     * @var string
+     */
     protected $protocols;
+
+    /**
+     * @var stream
+     */
     protected $socket;
 
     /**
