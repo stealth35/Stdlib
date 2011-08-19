@@ -42,36 +42,11 @@ class WebSocket
         
         $this->protocols = $protocols;
 
-        $url = (object) parse_url($url);
-
-        if(empty($url->port))
-        {
-            if($url->scheme === 'ws')
-            {
-                $url->port = 80;
-            }
-
-            if($url->scheme === 'wss')
-            {
-                $url->port = 443;
-            }
-        }
-
-        if(empty($url->path))
-        {
-            $url->path = '/';
-        }
-
-        $this->socket = @stream_socket_client("$url->host:$url->port", $errno, $errstr);
+        $this->socket = @stream_socket_client("$url->host:80", $errno, $errstr);
 
         if(!$this->socket)
         {
             throw new \ErrorException($errstr, $errno, E_USER_WARNING);
-        }
-
-        if($url->scheme === 'wss')
-        {
-            stream_socket_enable_crypto($this->socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
         }
 
         stream_set_blocking($this->socket, 0);
