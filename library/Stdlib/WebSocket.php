@@ -84,7 +84,8 @@ class WebSocket
             $headers[] = "Sec-WebSocket-Protocol: $this->protocols";
         }
 
-        if(isset($url->user, $url->pass)) {
+        if(isset($url->user, $url->pass))
+        {
             $headers[] = 'Authorization: Basic ' . base64_encode("$url->user:$url->pass");
         }
 
