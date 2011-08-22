@@ -14,11 +14,6 @@ class WebSocket
     /**
      * @var string
      */
-    protected $url;
-
-    /**
-     * @var string
-     */
     protected $protocols;
 
     /**
@@ -33,8 +28,6 @@ class WebSocket
      */
     public function __construct($url, $protocols = array())
     {
-        $this->url = $url;
-
         if(is_array($protocols))
         {
             $protocols = implode(', ', $protocols);
