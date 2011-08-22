@@ -91,17 +91,16 @@ class WebSocket
             $headers[] = "Sec-WebSocket-Protocol: $this->protocols";
         }
 
+        if(isset($url->user, $url->pass)) {
+            $headers[] = 'Authorization: Basic ' . base64_encode("$url->user:$url->pass");
+        }
+
         $key3 = range("\x00", "\xFF");
         shuffle($key3);
 
         $header = implode("\r\n", $headers) . "\r\n\r\n" . implode('', array_slice($key3, 0, 8));
 
         fwrite($this->socket, $header);
-
-        $r = array($this->socket);
-        $w = $e = null;
-
-        while(stream_select($r, $w, $e, 0));
     }
 
     /**
@@ -109,16 +108,12 @@ class WebSocket
      */
     public function send($data)
     {
+        usleep(20000);
         fwrite($this->socket, "\x00$data\xFF");
     }
 
     public function close()
     {
-        $r = array($this->socket);
-        $w = $e = null;
-
-        while(stream_select($r, $w, $e, 0));
-
         stream_socket_shutdown($this->socket, STREAM_SHUT_RDWR);
     }
 
