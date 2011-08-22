@@ -108,6 +108,8 @@ class WebSocket
 
     public function close()
     {
+        usleep(20000);
+        fwrite($this->socket, "\xFF\x00");
         stream_socket_shutdown($this->socket, STREAM_SHUT_RDWR);
     }
 
