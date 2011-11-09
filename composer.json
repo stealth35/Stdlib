@@ -2,7 +2,7 @@
     "name": "stealth35/stdlib",
     "type": "library",
     "description": "PHP Stdlib extra",
-    "keywords": ["spl", "iterator"],
+    "keywords": ["spl", "iterator", "websocket"],
     "homepage": "https://github.com/stealth35/Stdlib",
     "license": "MIT",
     "authors": [
