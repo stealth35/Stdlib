@@ -1,16 +1,7 @@
 PHP Stdlib extra
 ================
 
-INSTALL
--------
-
-``` php
-<?php
-	set_include_path('../Stdlib/library' . PATH_SEPARATOR . get_include_path());
-	spl_autoload_register();
-```
-
-EXEMPLE
+EXAMPLE
 -------
 ``` php
 <?php
