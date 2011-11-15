@@ -5,4 +5,5 @@ php:
   - 5.4
 
 notifications:
-  email: U45AA12467464A70F0F613A84A@stealth35.basecamphq.com
+  email: 
+    - U45AA12467464A70F0F613A84A@stealth35.basecamphq.com
