@@ -1,5 +1,7 @@
 <?php
-namespace Stdlib;
+namespace Stdlib\Tests;
+
+use Stdlib\SplVectorIterator;
 
 class SplVectorIteratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,8 +18,8 @@ class SplVectorIteratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-    * @expectedException \UnexpectedValueException
-    */
+     * @expectedException \UnexpectedValueException
+     */
     public function testAppendInvalid()
     {
     	$this->vector->append(1);
