@@ -1,5 +1,5 @@
 <?php
-namespace Stdlib\Tests\Units;
+namespace Stdlib\tests\units;
 
 use \mageekguy\atoum;
 
