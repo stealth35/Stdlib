@@ -1,7 +1,7 @@
 <?php
 namespace Stdlib\Tests\Units;
 
-use mageekguy\atoum;
+use \mageekguy\atoum;
 
 class SplVectorIterator extends atoum\test
 {
