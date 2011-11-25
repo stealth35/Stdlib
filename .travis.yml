@@ -4,6 +4,6 @@ php:
   - 5.3
   - 5.4
 
-notifications:
-  email: 
-    - U45AA12467464A70F0F613A84A@stealth35.basecamphq.com
+before_script: wget http://downloads.atoum.org/nightly/mageekguy.atoum.phar
+
+script: php mageekguy.atoum.phar -d tests
