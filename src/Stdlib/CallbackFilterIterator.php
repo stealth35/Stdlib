@@ -9,7 +9,7 @@ namespace Stdlib;
  * @package  Stdlib
  * @author   stealth35
  */
-class CallbackFilterIerator extends \FilterIterator
+class CallbackFilterIterator extends \FilterIterator
 {
     /**
      * @var mixed
