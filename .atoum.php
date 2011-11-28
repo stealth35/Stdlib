@@ -7,5 +7,3 @@ spl_autoload_register(function($class) use ($src) {
         require $filename;
     }
 });
-
-require_once __DIR__.'/mageekguy.atoum.phar';
