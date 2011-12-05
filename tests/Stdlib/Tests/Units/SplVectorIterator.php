@@ -5,26 +5,12 @@ use \mageekguy\atoum;
 
 class SplVectorIterator extends atoum\test
 {
-    protected $vector;
-
-    protected function setUp()
+    public function testAppendValid()
     {
-        $this->vector = new \Stdlib\SplVectorIterator('string');
+        $vector = new \Stdlib\SplVectorIterator('string');
 
-        return $this;
-    }
-
-    protected function tearDown()
-    {
-        $this->vector = null;
-
-        return $this;
-    }
-
-    public function testAppendInvalid()
-    {
         $this->assert
-             ->exception($this->vector->append(1))
+             ->exception($vector->append(1))
              ->isInstanceOf('\UnexpectedValueException');
     }
 }
