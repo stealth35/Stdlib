@@ -10,7 +10,10 @@ class SplVectorIterator extends atoum\test
         $vector = new \Stdlib\SplVectorIterator('string');
 
         $this->assert
-             ->exception($vector->append(1))
+             ->exception(function () use ($vector) {
+                    $vector->append(1);
+                }
+             )
              ->isInstanceOf('\UnexpectedValueException');
     }
 }
