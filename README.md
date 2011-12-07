@@ -1,6 +1,8 @@
 PHP Stdlib extra
 ================
 
+[![Build Status](https://secure.travis-ci.org/stealth35/Stdlib.png)](http://travis-ci.org/stealth35/Stdlib)
+
 EXAMPLE
 -------
 ``` php
